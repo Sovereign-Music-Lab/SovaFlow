@@ -1,0 +1,7 @@
+.private/
+.env
+.env.*
+models/
+weights/
+outputs/
+.DS_Store
