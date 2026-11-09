@@ -71,7 +71,11 @@ flowchart LR
 
 ## 메뉴 쓰기
 
-![한국어 메뉴](docs/images/10-menu-ko.jpg)
+```sh
+node bin/sovaflow.mjs menu --lang ko
+```
+
+메뉴에는 설치 점검, 내장 예제, DeepChord → SovaRoll 실행, 기록 조회, 피드백, 다음 버전, 도움말이 있습니다.
 
 시스템 언어가 한국어면(또는 `--lang ko`) 메뉴가 한국어로, 아니면 영어로 나옵니다. 번호를 고르고 Enter, **0**은 끝내기입니다.
 

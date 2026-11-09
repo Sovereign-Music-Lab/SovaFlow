@@ -71,7 +71,11 @@ The loop stops by itself when your rating reaches the job's target, when the max
 
 ## Using the menu
 
-![The Korean menu](docs/images/10-menu-ko.jpg)
+```sh
+node bin/sovaflow.mjs menu --lang en
+```
+
+The menu offers setup checks, a built-in example, DeepChord → SovaRoll, run history, feedback, the next version, and help.
 
 The menu speaks Korean when your system language is Korean (or with `--lang ko`) and English otherwise. Choose a number and press Enter; **0** quits.
 
