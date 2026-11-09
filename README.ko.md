@@ -79,6 +79,8 @@ node bin/sovaflow.mjs menu --lang ko
 
 시스템 언어가 한국어면(또는 `--lang ko`) 메뉴가 한국어로, 아니면 영어로 나옵니다. 번호를 고르고 Enter, **0**은 끝내기입니다.
 
+**처음 연습하기:** 메뉴에서 `2`를 누르면 고정된 합성 예제 MIDI를 만듭니다. 화면의 `Run:` 뒤 폴더 안 `artifacts/compose/synthetic-sketch.mid`를 SovaRoll 등에서 열어 들을 수 있습니다. `4`는 실행 기록, `5`는 가장 최근 실행의 평점·의견 입력, `6`은 조건이 허용할 때 다음 실행입니다. 실제로 들었을 때만 청취 질문에 `y`로 답하세요. 합성 예제는 기록과 반복을 연습하는 고정 패턴이라 피드백으로 음표가 바뀌지는 않습니다.
+
 ## 명령
 
 SovaFlow 폴더에서 아래 명령을 실행합니다. 다른 곳에서 터미널을 열었다면 먼저 `cd` 명령으로 해당 폴더로 이동하세요.
@@ -116,10 +118,10 @@ node bin/sovaflow.mjs run synthetic-loop
 node bin/sovaflow.mjs status
 ```
 
-`status`에 표시된 실행 ID를 아래의 `RUN` 대신 입력하세요. `--heard`는 실제로 결과를 들었을 때 추가합니다.
+`status`에 표시된 실행 ID를 아래의 `RUN` 대신 입력하세요. `--heard`는 실제로 결과를 들었을 때 추가합니다. 기본 예제의 목표는 4점이므로 다음 실행을 연습하는 아래 예제는 3점입니다.
 
 ```sh
-node bin/sovaflow.mjs feedback RUN --rating 4 --note "멜로디를 부드럽게" --heard
+node bin/sovaflow.mjs feedback RUN --rating 3 --note "멜로디를 부드럽게"
 node bin/sovaflow.mjs iterate RUN
 node bin/sovaflow.mjs status RUN
 ```

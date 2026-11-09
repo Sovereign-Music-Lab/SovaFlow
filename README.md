@@ -79,6 +79,8 @@ The menu offers setup checks, a built-in example, DeepChord → SovaRoll, run hi
 
 The menu speaks Korean when your system language is Korean (or with `--lang ko`) and English otherwise. Choose a number and press Enter; **0** quits.
 
+**First practice:** Choose `2` to create a fixed synthetic MIDI example. Find `artifacts/compose/synthetic-sketch.mid` inside the folder printed after `Run:` and open it in SovaRoll or a MIDI player. Choose `4` for run history, `5` to rate and comment on the latest run, and `6` to continue when the stop rules allow it. Answer `y` to the listening question only after actually listening. This synthetic example is a fixed practice pattern: feedback does not change its notes.
+
 ## Commands
 
 Run these commands inside the SovaFlow folder. If your terminal starts elsewhere, first use `cd` to enter that folder.
@@ -116,10 +118,10 @@ node bin/sovaflow.mjs run synthetic-loop
 node bin/sovaflow.mjs status
 ```
 
-Replace `RUN` below with the run ID shown by `status`. Add `--heard` only after you have listened to the result.
+Replace `RUN` below with the run ID shown by `status`. Add `--heard` only after you have listened to the result. The example below uses 3 because the built-in job stops when its target rating of 4 is reached.
 
 ```sh
-node bin/sovaflow.mjs feedback RUN --rating 4 --note "Softer melody" --heard
+node bin/sovaflow.mjs feedback RUN --rating 3 --note "Softer melody"
 node bin/sovaflow.mjs iterate RUN
 node bin/sovaflow.mjs status RUN
 ```

@@ -42,3 +42,5 @@ Updated: 2026-11-10. Version 0.1.0: F-001–F-004 implemented and tested (Node.j
 Read AGENTS.md, this file, Git status, then one task. Update this English file after each completed/blocked task and before ending a session. Keep it short; archive detail under docs/context/. Recheck the working directory and remote whenever switching repositories. Git and actual test output outrank stale summaries. Publication must be verified against the remote; this document alone is not proof of a push.
 
 - 2026-11-10: built-in examples no longer shadow adapter environment settings; explicit job configuration still has priority. Local Gemma 4 12B generated the bounded change and regression test. Verification: npm test 11 passed; real DeepChord demo + isolated SovaRoll server import and MIDI export verified. Audible output not verified.
+
+- 2026-11-10: Bilingual README now explains the fixed practice example, result path, feedback, and stop rule.
