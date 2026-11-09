@@ -1,0 +1,11 @@
+{
+  "schema": "sovaflow.job/1",
+  "id": "synthetic-loop",
+  "title": "Built-in practice loop (no other apps needed)",
+  "intention": {"text": "A calm four-bar piano sketch to practise the feedback loop", "bars": 4},
+  "steps": [
+    {"id": "compose", "adapter": "synthetic", "action": "compose"},
+    {"id": "note", "adapter": "synthetic", "action": "note", "args": {"text": "Synthetic placeholder: replace with DeepChord for real music."}}
+  ],
+  "policy": {"maxIterations": 3, "targetRating": 4}
+}

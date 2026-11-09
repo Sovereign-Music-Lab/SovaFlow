@@ -1,0 +1,14 @@
+{
+  "schema": "sovaflow.job/1",
+  "id": "deepchord-to-sovaroll",
+  "title": "DeepChord demo sketch → SovaRoll project (editable MIDI)",
+  "intention": {"text": "Bring a DeepChord piano sketch into SovaRoll for editing", "bars": 4},
+  "adapters": {"deepchord": {"command": "deepchord"}, "sovaroll": {"url": "http://127.0.0.1:4317"}},
+  "steps": [
+    {"id": "sketch", "adapter": "deepchord", "action": "demo"},
+    {"id": "before", "adapter": "sovaroll", "action": "state"},
+    {"id": "import", "adapter": "sovaroll", "action": "import-midi", "input": "sketch:midi", "args": {"name": "DeepChord sketch.mid"}},
+    {"id": "export", "adapter": "sovaroll", "action": "export-midi"}
+  ],
+  "policy": {"maxIterations": 3, "targetRating": 4, "onUnavailable": "block"}
+}

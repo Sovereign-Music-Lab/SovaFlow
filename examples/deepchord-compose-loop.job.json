@@ -1,0 +1,13 @@
+{
+  "schema": "sovaflow.job/1",
+  "id": "deepchord-compose-loop",
+  "title": "Local-LLM composition with DeepChord → SovaRoll → (optional) Logic Pro, repeated with your feedback",
+  "intention": {"text": "A warm eight-bar piano ballad in a slow tempo", "bars": 8},
+  "adapters": {"deepchord": {"command": "deepchord"}, "sovaroll": {"url": "http://127.0.0.1:4317"}},
+  "steps": [
+    {"id": "compose", "adapter": "deepchord", "action": "compose", "args": {"model": "YOUR_INSTALLED_LOCAL_MODEL"}},
+    {"id": "import", "adapter": "sovaroll", "action": "import-midi", "input": "compose:midi", "args": {"name": "DeepChord composition.mid"}},
+    {"id": "logic", "adapter": "deepchord", "action": "logic-open", "args": {"step": "compose"}}
+  ],
+  "policy": {"maxIterations": 5, "targetRating": 4, "onUnavailable": "block"}
+}

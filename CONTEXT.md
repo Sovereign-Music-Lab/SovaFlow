@@ -1,11 +1,11 @@
 # CONTEXT — Sovereign Flow / SovaFlow
 
-Updated: 2026-11-08 handoff. This file is part of the initial design/documentation release.
+Updated: 2026-11-09. Version 0.1.0: F-001–F-004 implemented and tested (Node.js 22+, no dependencies).
 
 ## Identity
 - Repository: Sovereign-Music-Lab/SovaFlow, intended branch main.
 - Role: optional orchestration of DeepChord, Sovereign DAW and the human feedback loop.
-- Status: design and task queue only. No executable workflow engine is implemented or verified yet.
+- Status: executable CLI (`bin/sovaflow.mjs`): contract, synthetic adapter, optional SovaRoll and DeepChord/Logic adapters, feedback iteration, bilingual menu and double-click starters.
 
 ## Operating policy
 - Receiving coding environment: Gemma 4 26B, MLX, M5 Pro, 24 GB unified memory (user-specified target).
@@ -21,16 +21,15 @@ Updated: 2026-11-08 handoff. This file is part of the initial design/documentati
 - Target loop: human → local LLM (optional RAG/LoRA) → Sovereign DAW → autonomous composition → Logic Pro MCP → result → human feedback → repeat.
 - Current capability and future architecture are separate. Preserve editable sources and actual evidence.
 
-## Next task
-- Read AGENTS.md and TASKS.md. F-001 defines a versioned workflow job/result contract and synthetic dry-run validator.
-- The runtime choice is unresolved; obtain the maintainer's choice before adding dependencies.
-- First core tests must run without sibling checkouts, an LLM, private data, Logic Pro or network services.
-- Keep requested action, acceptance, verified import, audible output and human quality judgment as separate states.
-- Later adapters are optional and must inspect actual capabilities, revisions and cancellation behavior.
+## Current state and evidence
+- Runtime chosen 2026-11-09 at the maintainer's request: Node.js 22+, built-in modules only (see TASKS.md).
+- `npm test`: 10 tests pass (contract, synthetic loop, iteration/stop rules, SovaRoll adapter vs HTTP test double, DeepChord adapter vs CLI test double, cancel/resume, CLI).
+- Real check 2026-11-09: SovaRoll 0.129 server (temporary project) + real `deepchord demo`: import verified, MIDI export verified, rename + undo verified. Not exercised: `deepchord compose` with a real local model, Logic Pro opening, Windows starter.
+- This session was a Claude cloud session explicitly requested by the maintainer on 2026-11-09 ("finish SovaFlow … then commit and push everything"); the repository default policy (local Gemma 4) is unchanged for later sessions.
+- Docs: README (en/ko) for non-programmers with real terminal images (`scripts/capture-terminal.mjs`), docs/CONTRACT.en.md/.ko.md.
 
-## Evidence boundary
-- This release validates documentation, links and the reusable skill; no workflow runtime tests exist yet.
-- No Gemma coding session or autonomous composition run is claimed.
+## Next task
+- F-005 (human trial with a real local model and Logic), then F-006 render step. See TASKS.md.
 
 ## Navigation
 - [Organization](https://github.com/Sovereign-Music-Lab)

@@ -1,0 +1,15 @@
+{
+  "name": "sovaflow",
+  "version": "0.1.0",
+  "description": "Optional orchestration of DeepChord, Sovereign DAW (SovaRoll) and human feedback, with an explicit evidence contract.",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "bin": {"sovaflow": "bin/sovaflow.mjs"},
+  "scripts": {
+    "start": "node bin/sovaflow.mjs menu",
+    "test": "node --test tests/*.test.mjs",
+    "doctor": "node bin/sovaflow.mjs doctor"
+  }
+}
