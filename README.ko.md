@@ -11,8 +11,6 @@ SovaFlow는 **DeepChord**(로컬 LLM 작곡), **Sovereign DAW / SovaRoll**(편�
 
 0.1.0은 Node.js 22 이상에서 **의존성 없이** 동작합니다. 내장 합성 어댑터로 다른 프로그램 없이 전체 순환을 연습할 수 있고, DeepChord·SovaRoll 어댑터는 선택입니다.
 
-![실제 실행: DeepChord 스케치 → SovaRoll 가져오기 → MIDI 내보내기](docs/images/12-real-run.jpg)
-
 ## 목차
 
 - [하는 일](#하는-일)
@@ -79,17 +77,25 @@ flowchart LR
 
 ## 명령
 
-![도움말](docs/images/02-help-ko.jpg)
+SovaFlow 폴더에서 아래 명령을 실행합니다. 다른 곳에서 터미널을 열었다면 먼저 `cd` 명령으로 해당 폴더로 이동하세요.
 
-아래 `sovaflow`는 SovaFlow 폴더 안에서 `node bin/sovaflow.mjs`를 실행한다는 뜻입니다.
+```sh
+node bin/sovaflow.mjs --help
+```
+
+다른 설명에 쓰인 `sovaflow`는 `node bin/sovaflow.mjs`의 줄임말입니다. 별도 설치 없이 실행할 때는 전체 명령으로 바꿔 입력하세요.
 
 **설치 상태 점검**
 
-![doctor](docs/images/03-doctor.jpg)
+```sh
+node bin/sovaflow.mjs doctor
+```
 
 **준비된 작업**(`examples/`):
 
-![examples](docs/images/04-examples.jpg)
+```sh
+node bin/sovaflow.mjs examples
+```
 
 | 작업 | 필요 | 하는 일 |
 |---|---|---|
@@ -100,15 +106,19 @@ flowchart LR
 
 **미리 보기, 실행, 피드백, 다음 버전**
 
-![dry run](docs/images/05-dry-run.jpg)
+```sh
+node bin/sovaflow.mjs run synthetic-loop --dry-run
+node bin/sovaflow.mjs run synthetic-loop
+node bin/sovaflow.mjs status
+```
 
-![run](docs/images/06-run.jpg)
+`status`에 표시된 실행 ID를 아래의 `RUN` 대신 입력하세요. `--heard`는 실제로 결과를 들었을 때 추가합니다.
 
-![feedback](docs/images/07-feedback.jpg)
-
-![iterate](docs/images/08-iterate.jpg)
-
-![status](docs/images/09-status.jpg)
+```sh
+node bin/sovaflow.mjs feedback RUN --rating 4 --note "멜로디를 부드럽게" --heard
+node bin/sovaflow.mjs iterate RUN
+node bin/sovaflow.mjs status RUN
+```
 
 그 밖의 명령: `validate 파일`(작업/기록 검사), `resume 실행`(중단된 실행 이어가기, 끝난 편집은 다시 적용하지 않음), `cancel 실행`(다음 단계 전에 멈춤), `where`(실행 기록 폴더), `remove-data --yes`(SovaFlow 실행 기록 전체 삭제).
 
@@ -117,8 +127,6 @@ flowchart LR
 1. **SovaRoll**: 평소처럼 시작합니다(`http://127.0.0.1:4317`). 다른 포트라면 작업에 `"adapters": {"sovaroll": {"url": "http://127.0.0.1:4318"}}`를 쓰거나 `SOVAFLOW_SOVAROLL_URL`을 설정합니다.
 2. **DeepChord**: 터미널에서 `deepchord`가 실행되도록 설치하거나, `"adapters": {"deepchord": {"command": "/경로/deepchord"}}` 또는 `SOVAFLOW_DEEPCHORD`를 설정합니다.
 3. `sovaflow doctor` → `sovaflow run deepchord-to-sovaroll --dry-run` → `--dry-run` 없이 실행.
-
-![실제 DeepChord·SovaRoll 대상 미리 보기](docs/images/11-real-dry-run.jpg)
 
 SovaFlow가 각 프로그램에 하는 일 — 그 이상은 하지 않습니다.
 
@@ -167,7 +175,7 @@ Sovereign의 각 프로젝트는 혼자서 동작합니다. SovaFlow의 핵심·
 npm test        # 테스트 10개: 계약, 합성 순환, 피드백/반복, SovaRoll 어댑터(테스트 대역), DeepChord 어댑터(테스트 대역), 취소/재개, CLI
 ```
 
-2026-11-09에 실제 SovaRoll 0.129 서버와 실제 DeepChord CLI(`deepchord demo`)로도 확인했습니다: 가져오기 검증, MIDI 내보내기 검증, 이름 변경 + 되돌리기 검증. 실제 로컬 모델로 `deepchord compose`, Logic Pro 열기는 실행하지 않았습니다. 터미널 그림은 `scripts/capture-terminal.mjs`가 실제 출력으로 만듭니다. 설계와 작업 목록: [TASKS.md](TASKS.md), [docs/CONTRACT.ko.md](docs/CONTRACT.ko.md).
+2026-11-09에 실제 SovaRoll 0.129 서버와 실제 DeepChord CLI(`deepchord demo`)로도 확인했습니다: 가져오기 검증, MIDI 내보내기 검증, 이름 변경 + 되돌리기 검증. 실제 로컬 모델로 `deepchord compose`, Logic Pro 열기는 실행하지 않았습니다. 설계와 작업 목록: [TASKS.md](TASKS.md), [docs/CONTRACT.ko.md](docs/CONTRACT.ko.md).
 
 ## 라이선스
 

@@ -11,8 +11,6 @@ SovaFlow connects **DeepChord** (local-LLM composition), **Sovereign DAW / SovaR
 
 Version 0.1.0 runs on Node.js 22+ with **no dependencies**. A built-in synthetic adapter lets you practise the whole loop with no other program installed; the DeepChord and SovaRoll adapters are optional.
 
-![A real run: DeepChord sketch → SovaRoll import → MIDI export](docs/images/12-real-run.jpg)
-
 ## Contents
 
 - [What it does](#what-it-does)
@@ -79,17 +77,25 @@ The menu speaks Korean when your system language is Korean (or with `--lang ko`)
 
 ## Commands
 
-![Help](docs/images/01-help.jpg)
+Run these commands inside the SovaFlow folder. If your terminal starts elsewhere, first use `cd` to enter that folder.
 
-`sovaflow` below means `node bin/sovaflow.mjs` run inside the SovaFlow folder.
+```sh
+node bin/sovaflow.mjs --help
+```
+
+Elsewhere in this guide, `sovaflow` is shorthand for `node bin/sovaflow.mjs`. Use the full command when running without a separate installation.
 
 **Check your setup**
 
-![doctor](docs/images/03-doctor.jpg)
+```sh
+node bin/sovaflow.mjs doctor
+```
 
 **Ready-made jobs** (in `examples/`):
 
-![examples](docs/images/04-examples.jpg)
+```sh
+node bin/sovaflow.mjs examples
+```
 
 | Job | Needs | What it does |
 |---|---|---|
@@ -100,15 +106,19 @@ The menu speaks Korean when your system language is Korean (or with `--lang ko`)
 
 **Dry run, run, feedback, next version**
 
-![dry run](docs/images/05-dry-run.jpg)
+```sh
+node bin/sovaflow.mjs run synthetic-loop --dry-run
+node bin/sovaflow.mjs run synthetic-loop
+node bin/sovaflow.mjs status
+```
 
-![run](docs/images/06-run.jpg)
+Replace `RUN` below with the run ID shown by `status`. Add `--heard` only after you have listened to the result.
 
-![feedback](docs/images/07-feedback.jpg)
-
-![iterate](docs/images/08-iterate.jpg)
-
-![status](docs/images/09-status.jpg)
+```sh
+node bin/sovaflow.mjs feedback RUN --rating 4 --note "Softer melody" --heard
+node bin/sovaflow.mjs iterate RUN
+node bin/sovaflow.mjs status RUN
+```
 
 Other commands: `validate FILE` (check a job/record), `resume RUN` (continue an interrupted run; finished edits are never applied twice), `cancel RUN` (stop before the next step), `where` (show the runs folder), `remove-data --yes` (delete all SovaFlow runs).
 
@@ -117,8 +127,6 @@ Other commands: `validate FILE` (check a job/record), `resume RUN` (continue an 
 1. **SovaRoll**: start it as usual (it listens on `http://127.0.0.1:4317`). For another port, set `"adapters": {"sovaroll": {"url": "http://127.0.0.1:4318"}}` in the job or `SOVAFLOW_SOVAROLL_URL`.
 2. **DeepChord**: install it so `deepchord` runs in a terminal, or set `"adapters": {"deepchord": {"command": "/path/to/deepchord"}}` or `SOVAFLOW_DEEPCHORD`.
 3. Run `sovaflow doctor`, then `sovaflow run deepchord-to-sovaroll --dry-run`, then without `--dry-run`.
-
-![A real dry run against DeepChord and SovaRoll](docs/images/11-real-dry-run.jpg)
 
 What SovaFlow does with each app — and nothing more:
 
@@ -167,7 +175,7 @@ Each Sovereign project works on its own. SovaFlow's core, contract and tests nee
 npm test        # 10 tests: contract, synthetic loop, feedback/iteration, SovaRoll adapter (test double), DeepChord adapter (test double), cancel/resume, CLI
 ```
 
-Verified on 2026-11-09 additionally against a real SovaRoll 0.129 server and the real DeepChord CLI (`deepchord demo`): import verified, MIDI export verified, rename + undo verified. `deepchord compose` with a real local model and Logic Pro opening were not exercised. Terminal images are produced from real output by `scripts/capture-terminal.mjs`. Design and queue: [TASKS.md](TASKS.md), [docs/CONTRACT.en.md](docs/CONTRACT.en.md).
+Verified on 2026-11-09 additionally against a real SovaRoll 0.129 server and the real DeepChord CLI (`deepchord demo`): import verified, MIDI export verified, rename + undo verified. `deepchord compose` with a real local model and Logic Pro opening were not exercised. Design and queue: [TASKS.md](TASKS.md), [docs/CONTRACT.en.md](docs/CONTRACT.en.md).
 
 ## License
 
