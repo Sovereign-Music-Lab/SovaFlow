@@ -132,6 +132,8 @@ Other commands: `validate FILE` (check a job/record), `resume RUN` (continue an 
 2. **DeepChord**: install it so `deepchord` runs in a terminal, or set `"adapters": {"deepchord": {"command": "/path/to/deepchord"}}` or `SOVAFLOW_DEEPCHORD`.
 3. Run `sovaflow doctor`, then `sovaflow run deepchord-to-sovaroll --dry-run`, then without `--dry-run`.
 
+The built-in examples can use environment variables. A value explicitly set in a job takes precedence over the environment; if neither is set, the adapter uses its default.
+
 What SovaFlow does with each app — and nothing more:
 
 | App | Actions | Safety |

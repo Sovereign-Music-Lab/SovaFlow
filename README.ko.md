@@ -132,6 +132,8 @@ node bin/sovaflow.mjs status RUN
 2. **DeepChord**: 터미널에서 `deepchord`가 실행되도록 설치하거나, `"adapters": {"deepchord": {"command": "/경로/deepchord"}}` 또는 `SOVAFLOW_DEEPCHORD`를 설정합니다.
 3. `sovaflow doctor` → `sovaflow run deepchord-to-sovaroll --dry-run` → `--dry-run` 없이 실행.
 
+내장 예제는 환경 변수를 사용할 수 있습니다. 작업 파일에 명시한 설정이 있으면 해당 값이 환경 변수보다 우선하고, 둘 다 없으면 기본값을 사용합니다.
+
 SovaFlow가 각 프로그램에 하는 일 — 그 이상은 하지 않습니다.
 
 | 프로그램 | 작업 | 안전장치 |

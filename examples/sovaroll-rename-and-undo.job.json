@@ -3,7 +3,6 @@
   "id": "sovaroll-rename-and-undo",
   "title": "Safe SovaRoll edit test: rename the project, then undo it",
   "intention": {"text": "Prove a SovaRoll edit is validated, applied, verified and undoable"},
-  "adapters": {"sovaroll": {"url": "http://127.0.0.1:4317"}},
   "steps": [
     {"id": "rename", "adapter": "sovaroll", "action": "command", "args": {"command": "project.rename", "arguments": {"name": "SovaFlow test name"}}},
     {"id": "undo", "adapter": "sovaroll", "action": "undo", "args": {"step": "rename"}}

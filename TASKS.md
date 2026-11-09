@@ -26,6 +26,10 @@ Runtime decision (2026-11-09, maintainer request "do SovaFlow design and tasks a
 - `sovaflow feedback` (rating, note, `--heard`, `--stop`), `sovaflow iterate` with stop rules, `previousRun` lineage, feedback history in the next job, DeepChord `--previous-run`.
 - Synthetic end-to-end replay across iterations in tests; CLI end-to-end test.
 
+## Environment configuration fix (done 2026-11-10)
+
+- Bundled jobs no longer hard-code adapter defaults, so environment overrides work; explicit job settings retain priority. `npm test`: 11 passed. Real DeepChord demo and isolated SovaRoll server verified import and export.
+
 ## Next (planned, not started)
 
 - **F-005 — real composition trial (human):** run `deepchord-compose-loop` with the maintainer's local model and Logic Pro; record which steps reached `verified`/`accepted` and the human's listening notes.
