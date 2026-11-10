@@ -13,6 +13,7 @@ Updated: 2026-11-10. Version 0.1.0: F-001–F-004 implemented and tested (Node.j
 - Use local Gemma 4 for the next coding stage. No silent model substitution or automatic cloud escalation.
 - The High/Middle/Low method is reusable planning guidance; it does not override the current model lock or license.
 - Read one task and bounded source excerpts. Measure real context/memory usage; do not assume a safe token count from RAM alone.
+- 2026-11-10 measurement (Codex 0.167, Ollama `gemma4:12b-mlx`, lean profile): the first request here is about 4.2k tokens; the earlier 163k-token overflow came from globally enabled tool schemas, not repository files. See [docs/context/local-small-model-2026-11-10.md](docs/context/local-small-model-2026-11-10.md).
 
 ## Durable decisions
 - Credits: Hee-sung Kang, Do-won Lee, Sungmo Park; keep them under README titles.
